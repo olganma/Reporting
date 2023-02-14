@@ -42,7 +42,8 @@ class DeliveryTest {
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         $("[data-test-id=\"date\"] .input__control").setValue(DataGenerator.generateDate(daysToAddForSecondMeeting));
         $(byText("Запланировать")).click();
-        $$("[data-test-id=\"replan-notification\"] .notification__content").last().shouldHave(Condition.text("У вас уже запланирована встреча на другую дату. Перепланировать?"), Duration.ofSeconds(15))
+        $(byText("Перепланировать")).click();
+        $(".notification__content").shouldHave(Condition.text("Встреча успешно запланирована на " + DataGenerator.generateDate(daysToAddForSecondMeeting)), Duration.ofSeconds(30))
                 .shouldBe(visible);
     }
 }
