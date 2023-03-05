@@ -30,17 +30,17 @@ class DeliveryTest {
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
         Configuration.holdBrowserOpen = true;
-        $("[data-test-id=\"city\"] .input__control").setValue(validUser.getCity());
-        $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-        $("[data-test-id=\"date\"] .input__control").setValue(DataGenerator.generateDate(daysToAddForFirstMeeting));
-        $("[data-test-id=\"name\"] .input__control").setValue(validUser.getName());
-        $("[data-test-id=\"phone\"] .input__control").setValue(validUser.getPhone());
-        $("[data-test-id=\"agreement\"]").click();
+        $("[data-test-id=city] input").setValue(validUser.getCity());
+        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        $("[data-test-id=date] input").setValue(DataGenerator.generateDate(daysToAddForFirstMeeting));
+        $("[data-test-id=name] input").setValue(validUser.getName());
+        $("[data-test-id=phone] input").setValue(validUser.getPhone());
+        $("[data-test-id=agreement]").click();
         $(byText("Запланировать")).click();
         $(".notification__content").shouldHave(Condition.text("Встреча успешно запланирована на " + DataGenerator.generateDate(daysToAddForFirstMeeting)), Duration.ofSeconds(30))
                 .shouldBe(visible);
-        $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-        $("[data-test-id=\"date\"] .input__control").setValue(DataGenerator.generateDate(daysToAddForSecondMeeting));
+        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        $("[data-test-id=date] input").setValue(DataGenerator.generateDate(daysToAddForSecondMeeting));
         $(byText("Запланировать")).click();
         $(byText("Перепланировать")).click();
         $(".notification__content").shouldHave(Condition.text("Встреча успешно запланирована на " + DataGenerator.generateDate(daysToAddForSecondMeeting)), Duration.ofSeconds(30))

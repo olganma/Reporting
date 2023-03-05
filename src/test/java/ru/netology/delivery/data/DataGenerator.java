@@ -22,9 +22,12 @@ public class DataGenerator {
     }
 
     public static String generateCity(String locale) {
-        Faker faker = new Faker(new Locale(locale));
-        String city = faker.address().city();
-        return city;
+        var cities = new String[] {"Майкоп", "Горно-Алтайск", "Уфа", "Улан-Удэ", "Махачкала", "Магас", "Нальчик", "Элиста",
+                "Черкесск", "Петрозаводск", "Сыктывкар", "Симферополь", "Йошкар-Ола", "Саранск", "Якутск",
+                "Владикавказ", "Казань", "Кызыл", "Ижевск", "Абакан", "Грозный", "Чебоксары", "Барнаул", "Чита",
+                "Петропавловск-Камчатский", "Краснодар", "Красноярск", "Пермь", "Владивосток", "Ставрополь",
+                "Хабаровск", "Благовещенск"};
+        return cities [new Random().nextInt(cities.length)];
     }
 
     public static String generateName(String locale) {
