@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/project/olganma/patterns-task1)
